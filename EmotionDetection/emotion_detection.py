@@ -1,4 +1,4 @@
-from flask import Flask, request
+
 import requests
 
 def emotion_detector(text_to_analyze):
