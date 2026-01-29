@@ -1,6 +1,7 @@
 
-from flask import Flask, request, jsonify
-import requests, json
+
+import requests
+import json
 
 def emotion_detector(text_to_analyze):
 
