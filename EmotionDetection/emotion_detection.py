@@ -16,14 +16,14 @@ def emotion_detector(text_to_analyze):
         emotions['dominant_emotion'] = highest_emotion
 
         print("=== MY OUTPUT ===")  # Add this
-        output = json.dumps(emotions, indent=2)
+        json_output = json.dumps(emotions, indent=2)
 
         display_statement = "For the given statement, the system response is "
         for key in emotions:
             value = emotions[key]
             display_statement += f"{key}: {value}, "
 
-        return display_statement
+        return json_output, display_statement
     else:
         return {"error": "Failed to analyze emotion"}
     

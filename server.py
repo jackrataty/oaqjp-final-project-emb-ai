@@ -8,14 +8,14 @@ from EmotionDetection.emotion_detection import emotion_detector
 #Initiate the flask app : 
 app = Flask(__name__)
 
+# Define the route for emotion detection
 @app.route("/emotionDetector", methods=["GET"])
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
-    result = emotion_detector(text_to_analyze)
-    return f"For the given statement, th esystem response is  as {result['dominant_emotion']} with a score of {result['score']}" 
-    
-    
+    json_output, display_statement = emotion_detector(text_to_analyze)
+    return f"{{\"json_output\": {json_output}\n\n\{display_statement}\" }}"
 
+#Render the index page
 @app.route("/")
 def render_index_page():
     ''' This function initiates the rendering of the main application
