@@ -21,6 +21,16 @@ def emotion_detector(text_to_analyze):
             display_statement += f"{key}: {value}, "
         dominant = emotions['dominant_emotion']
         return  display_statement + f" The dominant emotion is {dominant}"
+    if response.status_code == 400:
+        emotions = {
+            "anger": "None", 
+            "disgust": "None", 
+            "fear": "None", 
+            "joy": "None", 
+            "sadness":"None", 
+            "dominant_emotion":"None"
+        }
+
     else:
         return {"error": "Failed to analyze emotion"}
     
