@@ -23,7 +23,7 @@ def emotion_detector(text_to_analyze):
             value = emotions[key]
             display_statement += f"{key}: {value}, "
 
-        return json_output, display_statement
+        return emotions, display_statement
     else:
         return {"error": "Failed to analyze emotion"}
     

@@ -12,8 +12,9 @@ app = Flask(__name__)
 @app.route("/emotionDetector", methods=["GET"])
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
-    json_output, display_statement = emotion_detector(text_to_analyze)
-    return f"json_output : {json_output}\n\n{display_statement}"
+    emotions, display_statement = emotion_detector(text_to_analyze)
+    json_string = json.dumps(emotions, indent=2)
+    return f"json_output : <pre>{json_string}</pre><br><br>{display_statement}"
 
 #Render the index page
 @app.route("/")
