@@ -12,7 +12,10 @@ app = Flask(__name__)
 @app.route("/emotionDetector", methods=["GET"])
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
-    display_statement = emotion_detector(text_to_analyze)
+    emotion, dominant = emotion_detector(text_to_analyze)
+    display_statement = "For the given statement, the system response is "
+    display_statement + f" The dominant emotion is {dominant}"
+
     return  display_statement
 
 #Render the index page
