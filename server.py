@@ -2,7 +2,7 @@
     analysis to be executed over the Flask channel and deployed on
     localhost:5000.
 '''
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, request, jsonify 
 from EmotionDetection.emotion_detection import emotion_detector
 
 #Initiate the flask app : 
@@ -13,8 +13,10 @@ app = Flask(__name__)
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotions, display_statement = emotion_detector(text_to_analyze)
-    json_string = json.dumps(emotions, indent=2)
-    return f"json_output : <pre>{json_string}</pre><br><br>{display_statement}"
+    
+    return jsonify({
+        "emotions": emotions,
+        "message": display_statement})
 
 #Render the index page
 @app.route("/")
