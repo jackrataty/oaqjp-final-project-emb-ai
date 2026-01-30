@@ -19,8 +19,8 @@ def emotion_detector(text_to_analyze):
         for key in emotions:
             value = emotions[key]
             display_statement += f"{key}: {value}, "
-
-        return emotions, display_statement
+        dominant = emotions['dominant_emotion']
+        return  display_statement + f" The dominant emotion is {dominant}"
     else:
         return {"error": "Failed to analyze emotion"}
     

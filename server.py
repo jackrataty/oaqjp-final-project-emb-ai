@@ -13,10 +13,7 @@ app = Flask(__name__)
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotions, display_statement = emotion_detector(text_to_analyze)
-    
-    return jsonify({
-        "emotions": emotions,
-        "message": display_statement})
+    return  display_statement
 
 #Render the index page
 @app.route("/")
