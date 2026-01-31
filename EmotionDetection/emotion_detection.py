@@ -26,10 +26,7 @@ def emotion_detector(text_to_analyze):
             "dominant_emotion": None
             }
         
-     
     emotions['dominant_emotion'] = dominant_emotion
     
     return emotions, dominant_emotion
-    
-   
-    
+     
