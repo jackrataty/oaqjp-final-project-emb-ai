@@ -14,10 +14,11 @@ def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotion, dominant = emotion_detector(text_to_analyze)
     display_statement = "For the given statement, the system response is "
-    for key, value in emotion.items:
+    
+    for key, value in emotion.items():
         display_statement += f", {key} : {value}"
 
-    display_statement + f". The dominant emotion is {dominant}"
+    display_statement = display_statement + f". The dominant emotion is {dominant}"
 
     return  display_statement)
 
