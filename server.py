@@ -2,7 +2,7 @@
     analysis to be executed over the Flask channel and deployed on
     localhost:5000.
 '''
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
 #Initiate the flask app :
@@ -11,14 +11,15 @@ app = Flask(__name__)
 # Define the route for emotion detection
 @app.route("/emotionDetector", methods=["GET"])
 def sent_detector():
+    ''' This function handles the emotion detection requests
+        coming from the main application page over the Flask channel
+    '''
     text_to_analyze = request.args.get('textToAnalyze')
     emotion, dominant = emotion_detector(text_to_analyze)
     if dominant is None:
         display_statement = "Invalid text! Please try again!"
-        
     else:
         display_statement = "For the given statement, the system response is "
-        
         for key, value in emotion.items():
             display_statement += f", {key} : {value}"
 
