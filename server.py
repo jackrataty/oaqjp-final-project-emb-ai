@@ -9,11 +9,11 @@ from EmotionDetection.emotion_detection import emotion_detector
 app = Flask(__name__)
 
 # Define the route for emotion detection
-(@app.route("/emotionDetector", methods=["GET"])
+@app.route("/emotionDetector", methods=["GET"])
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotion, dominant = emotion_detector(text_to_analyze)
-    if !dominant:
+    if dominant == None:
         display_statement = "Invalid text! Please try again!"
         
     else:
@@ -24,7 +24,7 @@ def sent_detector():
 
         display_statement = display_statement + f". The dominant emotion is {dominant}"
 
-    return  display_statement)
+    return  display_statement
 
 #Render the index page
 @app.route("/")
