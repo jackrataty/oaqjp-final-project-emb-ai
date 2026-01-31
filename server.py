@@ -13,7 +13,7 @@ app = Flask(__name__)
 def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotion, dominant = emotion_detector(text_to_analyze)
-    if dominant == None:
+    if dominant is None:
         display_statement = "Invalid text! Please try again!"
         
     else:
